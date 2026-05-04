@@ -913,6 +913,10 @@ If output file exists, you'll be prompted to overwrite or create a numbered copy
     parser.add_argument('font', nargs='?', default=None, help='Google Fonts CSS URL (optional, defaults to Nunito Sans)')
     parser.add_argument('--no-open', action='store_true', help='Do not automatically open the PDF after creation')
     
+    if len(sys.argv) == 1:
+        print("Usage: python md_to_pdf.py input.md [output.pdf] [font_url] [--no-open]")
+        return 0
+
     args = parser.parse_args()
     
     return convert_to_pdf(args.input, args.output, args.font, auto_open=not args.no_open)
